@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  hal:
+    image: hal
+    env_file:
+        - .env     # path to your .env file
+    build:
+      context: .
+      dockerfile: ./Dockerfile

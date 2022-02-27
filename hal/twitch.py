@@ -12,8 +12,6 @@ class HalTwitch(commands.Cog):
 
     async def check_stream(self, streamer):
 
-        print(self.config.get('CLIENT_ID'))
-
         body = {
             'client_id': self.config.get('CLIENT_ID'),
             'client_secret': self.config.get('CLIENT_SECRET'),
@@ -24,8 +22,6 @@ class HalTwitch(commands.Cog):
                 
         #data output
         keys = r.json();
-
-        print(keys)
         
         headers = {
             'Client-ID': self.config.get('CLIENT_ID'),
@@ -45,13 +41,11 @@ class HalTwitch(commands.Cog):
     async def check_twitch_live(self):
         stream = await self.check_stream('nagifur')
 
-        print(type(stream))
-
-        print(stream['data'])
-
-        if stream.get('data') == []:
+        if self.live == True and stream.get('data') != []:
+            pass
+        elif self.live == True and stream.get('data') == []:
             self.live = False
-        else:
+        elif self.live == False and stream.get('data') != []:
             self.live = True
     
     @check_twitch_live.before_loop

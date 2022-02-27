@@ -1,3 +1,6 @@
 .env
 database.db
 venv/
+docker-compose.debug.yml
+.vscode/launch.json
+.vscode/tasks.json

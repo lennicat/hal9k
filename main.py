@@ -1,6 +1,10 @@
+import logging
+
 from dotenv import dotenv_values
 from disnake.ext import commands
 import disnake
+
+
 from hal import HAL
 from hal.db import Database
 from hal.slash import BasicCommands
@@ -10,7 +14,6 @@ intents = disnake.Intents.default()
 intents.members = True
 
 db = Database()
-
 db.init
 
 config = dotenv_values(".env")
